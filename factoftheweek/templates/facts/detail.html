@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}{{ fact.fact_title }} | Fact of the week{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-xs-12">
+		<h1>{{ fact.fact_title }}</h1>
+		<p>{{ fact.fact_text }}</p>
+	</div>
+</div>
+{% endblock %}

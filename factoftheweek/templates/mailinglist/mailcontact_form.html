@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Mailing List | Fact of the week{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-xs-12">
+		<form action="" method="post">
+			{% csrf_token %}
+		    {% for field in form %}
+            <div class="form-group">
+                <label for="id_{{ field.name }}">{{ field.label }}</label><br />
+                {{ field }}
+                {% if field.help_text %}
+                    <span class="help-block" style="display: inline;"><small>{{ field.help_text }}</small></span>
+                {% endif %}
+                {% if field.errors %}
+                <p class="has-error">
+                    <span class="help-block">
+                        {% for error in  field.errors %}{{ error }}{% endfor %}
+                    </span>
+                </p>
+                {% endif %}
+            </div>
+			{% endfor %}
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+</div>
+{% endblock %}

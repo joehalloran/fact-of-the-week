@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Facts | Fact of the week{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-xs-12">
+		<h1>Facts Index</h1>
+	</div>
+</div>
+<div class="row">
+{% if latest_facts_list %}
+	
+    {% for fact in latest_facts_list %}
+        
+	    <div class="col-lg-12">
+	        <h3><a href="{% url 'facts:detail' fact.id %}">{{ fact.fact_title }}</a></h3>
+	        <p>{{ fact.fact_text|truncatechars:150  }}</p>
+	        <p><a class="btn btn-primary" href="{% url 'facts:detail' fact.id %}" role="button">Read more</a></p>
+	        <hr />
+	    </div>
+	    
+    {% endfor %}
+   
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</div>
+
+{% endblock %}
