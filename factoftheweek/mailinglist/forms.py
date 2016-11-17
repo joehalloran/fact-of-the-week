@@ -1,5 +1,6 @@
 from django import forms
 from django.utils.safestring import mark_safe
+from django.core.urlresolvers import reverse_lazy
 
 from .models import MailContact
 
@@ -15,7 +16,7 @@ class MailContactCreateForm(forms.ModelForm):
             'terms_accepted': forms.CheckboxInput(attrs = {'required': True}) 
         }
         help_texts = {
-        	'terms_accepted': mark_safe('I agree to the <a href="{}">terms of service</a>'.format('../thanks/'))
+        	'terms_accepted': mark_safe('I agree to the <a href="{}">terms of service</a>'.format(reverse_lazy('mailinglist:terms')))
         }
 
 class Unsubscribe(forms.Form):

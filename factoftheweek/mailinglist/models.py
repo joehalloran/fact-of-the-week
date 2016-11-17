@@ -23,9 +23,6 @@ class MailContact(TimeStampedModel):
     def __str__(self):
         return "{} {}".format(self.first_name, self.second_name)
 
-    def get_absolute_url(self):
-    	return reverse("mailinglist:thanks")
-
     def delete(self, *args, **kwargs):
 		"""
 		Overide to send confirmation email to users.

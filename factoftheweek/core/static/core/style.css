@@ -35,6 +35,7 @@ body {
 
 /* Custom page footer */
 .footer {
+  margin-top: 20px;
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
@@ -85,4 +86,18 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+.errorlist {
+  padding-left: 0;
+  list-style: none;
+}
+
+.errorlist > li {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ebccd1;
+  border-radius: 4px;
+  color: #a94442;
+  background-color: #f2dede;
 }

@@ -17,7 +17,6 @@ class Join(SuccessMessageMixin, CreateView):
 class Unsubscribe(FormView):
 	template_name = 'mailinglist/unsubscribe.html'
 	form_class = Unsubscribe
-	success_url = reverse_lazy('mailinglist:thanks')
 
 	def form_valid(self, form):
 		"""Find email address (existence in db confirmed by .forms.unsubscribe.clean_email),
@@ -33,6 +32,7 @@ class UnsubscribeConfirm(DeleteView):
 	success_message = "Your contact details were deleted successfully."
 
 	def delete(self, request, *args, **kwargs):
-		# SuccessMessageMixin does not work with DeleteView
+		"""Work around as SuccessMessageMixin does not work with DeleteView
+		"""
 		messages.success(self.request, self.success_message)
 		return super(UnsubscribeConfirm, self).delete(request, *args, **kwargs)
