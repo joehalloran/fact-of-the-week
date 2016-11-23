@@ -5,6 +5,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils import timezone
 from django.core.mail import send_mass_mail
+from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from django.core.exceptions import ValidationError
 
@@ -40,9 +41,9 @@ class Fact(TimeStampedModel):
 			self.send_email_on_save = False # Set to true to disable emails on future saves (unless user overides)
 			recipients = MailContact.objects.values_list('email', flat=True) # get all mailing list recipients as a list.
 			for recipient in recipients:
-				subject, from_email, to = 'hello', 'from@example.com', recipient
-				text_content = "Hi, We've just published a new fact. Check it out here {}".format("http://factofthweek.com")
-				html_content = "<p>Hi, We've just published a new fact. Check it out here {}</p>".format("http://factofthweek.com")
+				subject, from_email, to = 'New fact of the week', 'from@example.com', recipient
+				text_content = "Hi, We've just published a new fact. Check it out here {}".format("http://factoftheweek.com")
+				html_content = "<p>Hi, We've just published a new fact. Check it out here {}</p>".format("http://factoftheweek.com")
 				msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
 				msg.attach_alternative(html_content, "text/html")
 				try:

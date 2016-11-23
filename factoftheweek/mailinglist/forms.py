@@ -16,7 +16,7 @@ class MailContactCreateForm(forms.ModelForm):
             'terms_accepted': forms.CheckboxInput(attrs = {'required': True}) 
         }
         help_texts = {
-        	'terms_accepted': mark_safe('I agree to the <a href="{}">terms of service</a>'.format(reverse_lazy('mailinglist:terms')))
+        	'terms_accepted': mark_safe('I agree to the <a href="{}">terms of service</a>'.format('../../terms/')) #TODO IMPLEMENT REVERSE OR WRITE TEST.
         }
 
 class Unsubscribe(forms.Form):

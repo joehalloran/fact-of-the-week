@@ -2,3 +2,7 @@
 *.DS_Store
 factoftheweek/tmp/
 factoftheweek/logger/
+factoftheweek/htmlcov/
+*~
+db.sqlite3
+factoftheweek/static/
