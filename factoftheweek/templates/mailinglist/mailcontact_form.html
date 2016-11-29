@@ -19,7 +19,9 @@
                 {% endif %}
                 {{ field }}
                 {% if field.help_text %}
-                    <span class="help-block" style="display: inline;"><small>{{ field.help_text }}</small></span>
+                    <span class="help-block" style="display: inline;"><small>{{ field.help_text|safe }}
+                    {# Using |safe to allow links in help text, specifically for terms_accepted #}
+                    </small></span>
                 {% endif %}
              
             </div>

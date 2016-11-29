@@ -4,12 +4,12 @@ body {
   padding-bottom: 20px;
 }
 
-.navbar-default {
+body .navbar-default {
     background-color: #fff;
     border-color: #fff;
 }
 
-.navbar-brand {
+body .navbar-brand {
   padding-left: 0;
 }
 

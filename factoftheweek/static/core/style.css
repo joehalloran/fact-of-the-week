@@ -4,9 +4,9 @@ body {
   padding-bottom: 20px;
 }
 
-.navbar-default {
-    background-color: #fff;
-    border-color: #fff;
+body .container .navbar-default {
+  background-color: #fff;
+  border-color: #fff;
 }
 
 .navbar-brand {
