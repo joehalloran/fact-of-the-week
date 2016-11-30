@@ -27,11 +27,11 @@ class IndexView(ListView):
 
     def get_queryset(self):
         """
-        Return the last 10 published questions.
+        Return all published facts.
         """
         return Fact.objects.filter(
         	pub_date__lte=timezone.now()
-    	).order_by('-pub_date')[:10]
+    	).order_by('-pub_date')
 
 class DetailView(DetailView):
     model = Fact

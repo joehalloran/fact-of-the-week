@@ -46,15 +46,3 @@ class MailingListFormsTest(TestCase):
 		response = self.client.post(reverse('mailinglist:join'), form_data, follow=True)
 		self.assertRedirects(response, reverse('home'))
 		self.assertContains(response, 'was created successfully')
-
-
-	def test_mail_delete_view_redirect(self):
-		"""
-		Test delete view form redirect with success message.
-		"""
-		form_data = {
-			'submit':True, 
-			}
-		response = self.client.post(reverse('mailinglist:join'), form_data, follow=True)
-		self.assertRedirects(response, reverse('home'))
-		self.assertContains(response, 'deleted successfully')

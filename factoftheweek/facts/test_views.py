@@ -44,11 +44,12 @@ class FactsViewsTest(TestCase):
 		self.assertNotContains(response, "future fact")
 
 	def test_fact_detail_view(self): 
-		self.create_many_facts()
-		url = reverse('facts:detail', args=[1])
+		self.create_fact()
+		f= Fact.objects.get(fact_title="only a test")
+		url = reverse('facts:detail', args=[f.id])
 		response = self.client.get(url)
 		self.assertEqual(response.status_code, 200)
-		self.assertContains(response, "only a test 0")
+		self.assertContains(response, "only a test")
 	
 	def test_future_fact_detail_view(self): 
 		self.create_many_facts()

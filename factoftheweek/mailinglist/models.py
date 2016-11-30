@@ -44,11 +44,9 @@ class MailContact(TimeStampedModel):
 		except:
 			logger.error('Email could not be sent to user to confirm mailing list removal.')
 
-	def recent_delete_ts():
+	def recent_delete_ts(self):
 		"""
 		Check if delete_timestamp was created in the last 30mins
 		"""
 		if self.delete_key and self.delete_timestamp:
-			if self.delete_timestamp > (timezone.now() - timedelta(minutes=30)):
-				return True
-		return False
+			return self.delete_timestamp > (timezone.now() - timedelta(minutes=10))
