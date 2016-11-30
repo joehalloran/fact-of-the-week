@@ -3,6 +3,8 @@ from .base import *
 
 DEBUG = False
 
+ALLOWED_HOSTS = ['factoftheweek.herokuapp.com']
+
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 DATABASES = {
@@ -22,7 +24,7 @@ db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
 
-WSGI_APPLICATION = 'factoftheweek.config.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 # Static file
 
