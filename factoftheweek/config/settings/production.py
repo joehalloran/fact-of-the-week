@@ -5,6 +5,17 @@ DEBUG = False
 
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
+}
+
 # Update database configuration with $DATABASE_URL.
 import dj_database_url
 db_from_env = dj_database_url.config()
