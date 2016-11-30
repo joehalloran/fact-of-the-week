@@ -13,10 +13,10 @@ DATABASES['default'].update(db_from_env)
 
 # Static file
 
-STATIC_ROOT = os.path.join(BAS_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(BAS_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
