@@ -35,3 +35,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+# Whitenoise to server static files (also configured in wsgi.py)
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
