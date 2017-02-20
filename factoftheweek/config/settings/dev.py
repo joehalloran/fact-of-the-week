@@ -6,6 +6,8 @@ DEBUG = True
 
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
+ADMINS = [('Joe', 'joe_halloran@hotmail.co.uk')]
+
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'tmp/emails/')
 

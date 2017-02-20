@@ -26,5 +26,5 @@ urlpatterns = [
     url(r'^about/', TemplateView.as_view(template_name='pages/about.html'), name='about'),
     url(r'^facts/', include('facts.urls')),
     url(r'^mailinglist/', include('mailinglist.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^factadmin/', admin.site.urls),
 ]

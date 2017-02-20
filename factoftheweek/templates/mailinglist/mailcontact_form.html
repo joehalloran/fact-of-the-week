@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}Mailing List | Fact of the week{% endblock %}
+{% block title %}Mailing List{% endblock %}
 
 {% block content %}
 <div class="row">
 	<div class="col-xs-12">
+        <h1>Apply to join the mailing list</h1>
+        <p>Membership of the fact of the week mailing list is special honour only bestowed upon the most venerable factoid enthusiasts. If you don't know the people behind this site, we strongly discourage you from applying. You are unlikely to be accepted and will be wasting your time.</p>
+        <h2>Application form</h2>
 		<form action="" method="post">
 			{% csrf_token %}
 		    {% for field in form %}
@@ -26,7 +29,7 @@
              
             </div>
 			{% endfor %}
-			<button type="submit" class="btn btn-default">Submit</button>
+			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</div>
 </div>

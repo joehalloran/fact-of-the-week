@@ -1,12 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}{{ fact.fact_title }} | Fact of the week{% endblock %}
+{% block title %}{{ fact.fact_title }}{% endblock %}
 
 {% block content %}
 <div class="row">
 	<div class="col-xs-12">
 		<h1>{{ fact.fact_title }}</h1>
+		<h4><small>Published: <em>{{ fact.pub_date|date:"l dS F Y" }}</em></small></h4>
 		<p>{{ fact.fact_text }}</p>
+	</div>
+	<div class="col-sm-9">
+		<h4><small>The Fact of the Week team only apply the most cursory and lacklustre scrutiny to our facts. We lay no claim to truth, or even, alledged truth. We take no responsibility for the accuracy or verisimilitude of the facts we publish.</small></h4>
 	</div>
 </div>
 {% endblock %}

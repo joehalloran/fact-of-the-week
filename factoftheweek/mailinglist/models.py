@@ -21,6 +21,7 @@ class MailContact(TimeStampedModel):
 	second_name = models.CharField(max_length=60)
 	email = models.EmailField(unique=True)
 	terms_accepted = models.BooleanField(default=False, blank=False, validators=[validate_terms_accepted])
+	approved = models.BooleanField(default=False, blank=False) 
 	delete_key = models.CharField(max_length=32, blank=True, null=True)
 	delete_timestamp = models.DateTimeField(blank=True, null=True)
 
@@ -29,10 +30,11 @@ class MailContact(TimeStampedModel):
 
 	def delete(self, *args, **kwargs):
 		"""
-		Overide to send confirmation email to users.
+		Overide to send confirmation email to users and admins.
 		"""
 		super(MailContact, self).delete(*args, **kwargs) # Call the "real" save() method.		
 		recipient = self.email
+		# Mail user
 		try:
 			send_mail(
 				"We are sorry to see you go", 
@@ -43,6 +45,11 @@ class MailContact(TimeStampedModel):
 			logger.info('Email was sent to user to confirm mailing list removal.')
 		except:
 			logger.error('Email could not be sent to user to confirm mailing list removal.')
+		# Mail admins
+		try:
+			mail_admins(subject = "New mailing list delete", message = "Someone has left the Fact of the week mailing list.")
+		except:
+			logger.error('Mail to admins not sent.')
 
 	def recent_delete_ts(self):
 		"""

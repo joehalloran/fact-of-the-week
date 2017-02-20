@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
-
 from .models import MailContact
 
-admin.site.register(MailContact)
+class MailContactAdmin(admin.ModelAdmin):
+    fields = ('first_name', 'second_name', 'email', 'terms_accepted', 'approved')
+
+admin.site.register(MailContact,  MailContactAdmin)

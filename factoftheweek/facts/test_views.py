@@ -6,7 +6,7 @@ from django.utils import timezone
 
 from .models import Fact
 
-# models test
+#Fact views test
 class FactsViewsTest(TestCase):
 
 	def create_fact(

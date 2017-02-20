@@ -4,6 +4,7 @@ from django.views.generic import CreateView, DeleteView, FormView
 from django.http import Http404
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse_lazy
+from django.core.mail import mail_admins
 from django.urls import reverse
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
@@ -16,7 +17,14 @@ class Join(SuccessMessageMixin, CreateView):
 	template_name = 'mailinglist/mailcontact_form.html'
 	form_class = MailContactCreateForm
 	success_url = reverse_lazy('home')
-	success_message = "%(email)s was created successfully"
+	success_message = "Thank you. Your application to join our mailing list will be reviewed by the Fact of the week team."
+
+	def form_valid(self, form):
+		"""
+		Email admins to inform them of the new mailing list application.
+		"""
+		mail_admins(subject = "New mailing list application", message = "Someone has applied to join to Fact of the week mailing list.")
+		return super(Join, self).form_valid(form)
 
 class Unsubscribe(FormView):
 	template_name = 'mailinglist/unsubscribe.html'
@@ -29,7 +37,7 @@ class Unsubscribe(FormView):
 		"""
 		email = form.cleaned_data['email']
 		contact = MailContact.objects.get(email= email)
-		contact.delete_key =  urandom(24).encode('hex') # Generate random delete key
+		contact.delete_key = urandom(12).encode('hex') # Generate random delete key
 		contact.delete_timestamp = timezone.now()
 		contact.save()
 		# Generate unique link using delete_key as query paramenter value

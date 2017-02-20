@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 class Fact(TimeStampedModel):
 
 	fact_title = models.CharField(max_length=200)
-	fact_text = models.CharField(max_length=2000)
+	fact_text = models.TextField(max_length=2000)
 	pub_date = models.DateTimeField('date published')
 	send_email_on_save = models.BooleanField(default=False)
 
@@ -39,9 +39,10 @@ class Fact(TimeStampedModel):
 			self.send_email_on_save = False # Set to true to disable emails on future saves (unless user overides)
 			recipients = MailContact.objects.values_list('email', flat=True) # get all mailing list recipients as a list.
 			for recipient in recipients:
-				subject, from_email, to = 'New fact of the week', 'from@example.com', recipient
-				text_content = "Hi, We've just published a new fact. Check it out here {}".format("http://factoftheweek.com")
-				html_content = "<p>Hi, We've just published a new fact. Check it out here {}</p>".format("http://factoftheweek.com")
+				url = 'https://factoftheweek.herokuapp.com/'
+				subject, from_email, to = 'New fact of the week', 'from@factoftheweek.herokuapp.com', recipient
+				text_content = "Hi, We've just published a new fact. Check it out here {}".format(url)
+				html_content = '<p>Hi, We\'ve just published a new fact. Check it out <a href="{}">here</a></p>'.format(url)
 				msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
 				msg.attach_alternative(html_content, "text/html")
 				try:

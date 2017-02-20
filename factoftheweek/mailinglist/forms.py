@@ -9,8 +9,7 @@ class MailContactCreateForm(forms.ModelForm):
     class Meta:
         model = MailContact
         fields = ['first_name', 'second_name', 'email' ,'terms_accepted']
-        widgets = {
-           
+        widgets = {           
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
             'second_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),

@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}Fact of the week{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
 <div class="jumbotron">
     <h1>Fact of the week</h1>
-    <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-    <p><a class="btn btn-lg btn-success" href="{% url 'facts:index' %}" role="button">Give me the facts</a></p>
-    <p><a class="btn btn-lg btn-success" href="{% url 'mailinglist:join' %}" role="button">Join the list</a></p>
+    <h2>Facts. Weekly.</h2>
+    <p class="lead">The Fact of the Week team only apply the most cursory and lacklustre scrutiny to our facts. We lay no claim to truth, or even, alledged truth. We take no responsibility for the accuracy or verisimilitude of the facts we publish.</p>
+    <p><a class="btn btn-lg btn-success" href="{% url 'facts:index' %}" role="button">Give me all the (alledged) facts</a></p>
 </div>
 
 <div class="row marketing">
